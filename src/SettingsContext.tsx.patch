@@ -1,0 +1,27 @@
+--- Integration guide for SettingsContext.tsx
+--- Add to the Settings interface:
+
+export interface Settings {
+    // ... existing settings ...
+    ttsEnabled: boolean;
+    ttsVoice: string;
+    ttsPitch: number;
+    ttsSpeechRate: number;
+    ttsVolume: number;
+}
+
+--- Add getter/setter methods:
+
+async getTTSSettings() {
+    return {
+        enabled: await this.get_setting("ttsEnabled", true),
+        voice: await this.get_setting("ttsVoice", "default"),
+        pitch: await this.get_setting("ttsPitch", 1.0),
+        rate: await this.get_setting("ttsSpeechRate", 1.0),
+        volume: await this.get_setting("ttsVolume", 1.0),
+    };
+}
+
+async setTTSSetting(key: string, value: any) {
+    return this.set_setting(key, value);
+}

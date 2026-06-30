@@ -1,0 +1,28 @@
+--- This file shows where to integrate TTS into the Translator.tsx
+--- Search for: async translate()
+--- Add these imports at the top:
+
+import { TextToSpeechManager } from "./TextToSpeech";
+import { TTSTextOverlay } from "./TTSOverlay";
+
+--- In GameTranslatorLogic class, add:
+
+private ttsManager: TextToSpeechManager;
+private ttsMode: boolean = false;
+
+constructor(imageState: ImageState) {
+    // ... existing code ...
+    this.ttsManager = new TextToSpeechManager();
+}
+
+setTTSMode(enabled: boolean): void {
+    this.ttsMode = enabled;
+}
+
+isTTSMode(): boolean {
+    return this.ttsMode;
+}
+
+getTTSManager(): TextToSpeechManager {
+    return this.ttsManager;
+}

@@ -1,0 +1,4 @@
+--- Update src/tabs/index.ts to export TabTTS
+--- Add this export:
+
+export { TabTTS } from './TabTTS';
